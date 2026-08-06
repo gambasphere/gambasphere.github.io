@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>2026 추석 도쿄 · 9/23–26</title>
+<style>
+:root{
+  --bg:#0f1115; --bg2:#171a21; --bg3:#1e222b;
+  --fg:#e8eaf0; --dim:#9aa3b2; --line:#2a2f3a;
+  --accent:#e8734a; --accent2:#f2b544; --moon:#8fb7f5; --ok:#5fbf8f;
+  --r:14px;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#faf9f7; --bg2:#fff; --bg3:#f2f0ec; --fg:#1c1e24; --dim:#6b7280; --line:#e4e2dd; }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.65; font-size:15px; padding-bottom:60px;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+
+/* hero */
+header{padding:34px 0 22px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.kicker{font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:700;text-transform:uppercase}
+h1{font-size:29px;margin:8px 0 6px;letter-spacing:-.02em;line-height:1.2}
+.sub{color:var(--dim);font-size:14px}
+.flights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.fl{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.fl .t{font-size:11px;color:var(--dim);letter-spacing:.08em;margin-bottom:4px}
+.fl .m{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.fl .s{font-size:12px;color:var(--dim);margin-top:2px}
+@media(max-width:520px){.flights{grid-template-columns:1fr}h1{font-size:24px}}
+
+/* alert */
+.alert{background:linear-gradient(135deg,rgba(232,115,74,.13),rgba(242,181,68,.08));
+  border:1px solid rgba(232,115,74,.35);border-radius:var(--r);padding:14px 16px;margin:18px 0}
+.alert b{color:var(--accent)}
+.alert .h{font-weight:700;margin-bottom:4px}
+
+/* day grid */
+.daygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0 8px}
+.dg{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center}
+.dg .d{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.dg .w{font-size:11px;color:var(--dim);margin-top:1px}
+.dg .tag{font-size:10px;margin-top:6px;padding:2px 6px;border-radius:20px;display:inline-block;font-weight:700}
+.dg.hol{border-color:rgba(232,115,74,.45)}
+.dg.hol .tag{background:rgba(232,115,74,.2);color:var(--accent)}
+.dg.good{border-color:rgba(95,191,143,.45)}
+.dg.good .tag{background:rgba(95,191,143,.16);color:var(--ok)}
+.dg.moon{border-color:rgba(143,183,245,.5)}
+.dg.moon .tag{background:rgba(143,183,245,.16);color:var(--moon)}
+
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;gap:4px;overflow-x:auto;padding:8px 0;margin:24px 0 0;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{flex:0 0 auto;background:none;border:1px solid var(--line);color:var(--dim);
+  padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+section[hidden]{display:none}
+section{padding-top:22px}
+h2{font-size:20px;margin:26px 0 12px;letter-spacing:-.015em}
+h2:first-child{margin-top:6px}
+h3{font-size:15px;margin:22px 0 9px;color:var(--dim);letter-spacing:.02em;font-weight:700}
+
+/* timeline */
+.tl{border-left:2px solid var(--line);margin-left:6px;padding-left:0}
+.tl li{list-style:none;position:relative;padding:0 0 16px 20px}
+.tl li::before{content:"";position:absolute;left:-6px;top:8px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--line)}
+.tl li.key::before{background:var(--accent);border-color:var(--accent)}
+.tl .time{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.03em}
+.tl .what{margin-top:1px}
+.tl .note{font-size:13px;color:var(--dim);margin-top:2px}
+
+/* cards */
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:10px 0}
+.card.star{border-color:rgba(242,181,68,.45);background:linear-gradient(135deg,rgba(242,181,68,.07),transparent)}
+.card.moonc{border-color:rgba(143,183,245,.4);background:linear-gradient(135deg,rgba(143,183,245,.08),transparent)}
+.card .ttl{font-weight:800;font-size:15px;letter-spacing:-.01em}
+.card .meta{font-size:12.5px;color:var(--dim);margin-top:4px;display:flex;flex-wrap:wrap;gap:4px 12px}
+.card .meta span{white-space:nowrap}
+.card .body{font-size:14px;margin-top:8px}
+.pill{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:20px;
+  background:var(--bg3);color:var(--dim);margin-right:6px;vertical-align:2px;letter-spacing:.03em}
+.pill.free{background:rgba(95,191,143,.16);color:var(--ok)}
+.pill.only{background:rgba(232,115,74,.18);color:var(--accent)}
+.pill.new{background:rgba(143,183,245,.16);color:var(--moon)}
+
+/* expandable card */
+details.card{padding:0}
+details.card > summary{list-style:none;cursor:pointer;padding:14px 40px 14px 16px;position:relative;border-radius:var(--r)}
+details.card > summary::-webkit-details-marker{display:none}
+details.card > summary::after{
+  content:"";position:absolute;right:16px;top:19px;width:9px;height:9px;
+  border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);
+  transform:rotate(45deg);transition:transform .18s}
+details.card[open] > summary::after{transform:rotate(-135deg);top:23px}
+details.card > summary:hover::after{border-color:var(--accent)}
+details.card .more{padding:0 16px 16px;margin-top:-2px}
+details.card .more .inner{border-top:1px dashed var(--line);padding-top:12px}
+.more dl{margin:0}
+.more dt{font-weight:800;font-size:11px;color:var(--accent);letter-spacing:.08em;margin-top:12px}
+.more dt:first-child{margin-top:0}
+.more dd{margin:3px 0 0;font-size:13.5px}
+.more ul{margin:4px 0 0;padding-left:18px;font-size:13.5px}
+.more li{margin-bottom:3px}
+.hint{font-size:12px;color:var(--dim);margin:4px 0 12px}
+.hint b{color:var(--accent)}
+
+/* split routes */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.split{grid-template-columns:1fr}}
+.split .card{margin:0}
+
+/* table */
+.tw{overflow-x:auto;margin:10px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:440px}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;color:var(--dim);letter-spacing:.06em;font-weight:700;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td b{font-weight:700}
+
+/* checklist */
+.ck{list-style:none;padding:0;margin:8px 0}
+.ck li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}
+.ck input{margin-top:4px;width:17px;height:17px;accent-color:var(--accent);flex:0 0 auto}
+.ck label{flex:1;cursor:pointer}
+.ck .due{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.03em}
+.ck input:checked + label{opacity:.4;text-decoration:line-through}
+
+/* misc */
+.muted{color:var(--dim);font-size:13.5px}
+.warn{border-left:3px solid var(--accent);padding-left:12px;margin:14px 0;font-size:13.5px;color:var(--dim)}
+.warn b{color:var(--fg)}
+footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--dim)}
+footer a{color:var(--dim)}
+footer li{margin-bottom:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:center}
+.stat .n{font-size:24px;font-weight:800;letter-spacing:-.03em}
+.stat .l{font-size:11.5px;color:var(--dim);margin-top:2px}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+@media(max-width:520px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">2026 추석 · 3박 4일</div>
+  <h1>도쿄 · 9월 23일 → 26일</h1>
+  <div class="sub">나 · 동생 · 엄마 3인 &nbsp;|&nbsp; 쇼핑 &gt; 관광, 휴식·음식 중시 &nbsp;|&nbsp; 숙소 긴자 권장</div>
+  <div class="flights">
+    <div class="fl">
+      <div class="t">가는편 · 9/23(수) · OZ1085</div>
+      <div class="m">08:40 GMP → 10:45 HND</div>
+      <div class="s">2시간 05분 · 하네다 제3터미널 · 잔여 9석</div>
+    </div>
+    <div class="fl">
+      <div class="t">오는편 · 9/26(토) · OZ9103 (ANA 운항)</div>
+      <div class="m">16:10 HND → 18:35 GMP</div>
+      <div class="s">2시간 25분 · <b>잔여 4석 — 변경 여지 없음</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="alert">
+  <div class="h">⚠️ 한일 연휴가 정확히 어긋난다</div>
+  일본은 <b>9/19~23이 11년 만의 실버위크 5연휴</b>. 우리 <b>도착일 9/23이 그 마지막 날</b>이라 관광지·백화점이 붐빈다.
+  반대로 <b>9/24(목)·9/25(금)은 일본 평일</b> — 한산하다. <b>쇼핑은 이 이틀에 몰아넣는다.</b>
+</div>
+
+<div class="daygrid">
+  <div class="dg hol"><div class="d">23</div><div class="w">수</div><div class="tag">일본 공휴일</div></div>
+  <div class="dg good"><div class="d">24</div><div class="w">목</div><div class="tag">골든데이</div></div>
+  <div class="dg moon"><div class="d">25</div><div class="w">금</div><div class="tag">추석 · 명월</div></div>
+  <div class="dg"><div class="d">26</div><div class="w">토</div><div class="tag">오전만</div></div>
+</div>
+<p class="muted">실질 체류는 <b>2.5일</b>. 9/23은 오후 반나절, 9/26은 오전 3~4시간뿐. 하코네·닛코·후지산 당일치기는 자리 없음.</p>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-t="d23">9/23 수</button>
+  <button role="tab" aria-selected="false" data-t="d24">9/24 목</button>
+  <button role="tab" aria-selected="false" data-t="d25">9/25 금 🌕</button>
+  <button role="tab" aria-selected="false" data-t="d26">9/26 토</button>
+  <button role="tab" aria-selected="false" data-t="always">상시 개최</button>
+  <button role="tab" aria-selected="false" data-t="lists">동생 목록</button>
+  <button role="tab" aria-selected="false" data-t="prep">준비 · 미확인</button>
+</nav>
+
+<!-- ============ 9/23 ============ -->
+<section id="d23">
+  <h2>9/23 (수) · 도착일 · 일본 공휴일</h2>
+  <p class="muted">일본 연휴 마지막 날이라 붐빈다. <b>저강도로 푼다.</b> 첫날 욕심내면 나머지 이틀이 망가진다.</p>
+
+  <ul class="tl">
+    <li class="key"><div class="time">05:30–06:00</div><div class="what">집 출발</div></li>
+    <li><div class="time">06:40</div><div class="what">김포 국제선 도착</div><div class="note">추석 직전 출국 피크 — 2시간 전 도착</div></li>
+    <li class="key"><div class="time">08:40 → 10:45</div><div class="what">이륙 → 하네다 T3</div></li>
+    <li><div class="time">~11:30</div><div class="what">입국심사 · 수하물</div><div class="note">공휴일 보정 +20~30분</div></li>
+    <li class="key"><div class="time">~12:20</div><div class="what">긴자 도착 · 호텔에 짐 맡김</div><div class="note">게이큐 → 아사쿠사선 직통 히가시긴자, 환승 없이 약 30분</div></li>
+    <li><div class="time">점심</div><div class="what">이치란 신바시 / 멘야 횻토코 유라쿠초</div><div class="note">¥1,000 이하, 도착 직후 가볍게</div></li>
+    <li class="key"><div class="time">15:00</div><div class="what">체크인 — 한 번 쉰다</div><div class="note">이걸 일정에 넣어둘 것</div></li>
+    <li><div class="time">오후</div><div class="what">아래 옵션 중 하나</div></li>
+    <li><div class="time">저녁</div><div class="what">긴자 텐쿠니(100년 텐동) / 긴자 돈카츠 사이토</div></li>
+  </ul>
+
+  <h3>오후 옵션 — 하나만 고를 것</h3>
+  <p class="hint">카드를 <b>누르면</b> 추천 이유·가는 법·주의점이 펼쳐집니다.</p>
+
+  <details class="card star">
+    <summary>
+      <div class="ttl">⭐ 하마리큐 온시 정원 + 화양산(和傘)</div>
+      <div class="meta"><span>🚶 긴자 도보 15~20분</span><span>💴 300엔 (65세↑ 150엔)</span><span>📅 ~9/27</span></div>
+      <div class="body">도립 9정원 <b>「와가사로 정원 돌기」</b> — 종이우산을 <b>무료로 빌려</b> 에도 정원을 걷는다.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>왜 1순위인가</dt>
+      <dd>도착 첫날 오후에 갈 수 있는 <b>유일한 도보권 명소</b>다. 짐 풀고 나와서 바로 걸어갈 수 있고, 앉을 데가 많아 비행기 직후 체력에 맞는다. 종이우산을 들고 찍으면 사진이 잘 나오는데, 정작 우산 대여는 <b>무료</b>다.</dd>
+      <dt>볼 것</dt>
+      <dd>
+        <ul>
+          <li><b>시오이리노이케</b> — 도쿄만 바닷물을 끌어들인 연못. 조수에 따라 수위와 물빛이 바뀐다</li>
+          <li><b>300년 흑송</b> — 입구 근처. 규모 자체가 압도적</li>
+          <li><b>나카지마노오차야</b> — 연못 위 찻집. 말차 세트가 있다 <span class="muted">(요금 미확인)</span></li>
+          <li>정원 너머로 시오도메 고층빌딩이 겹쳐 보이는 구도가 여기 시그니처</li>
+        </ul>
+      </dd>
+      <dt>주의</dt>
+      <dd>
+        <ul>
+          <li><b>9/23은 17:00 마감</b>(입장 16:30). 늦어도 15:30에는 들어가야 한다. 야간 21시 연장은 9/24~26만</li>
+          <li>자갈길·흙길이 있다. <b>굽 낮은 신발</b></li>
+          <li>화양산 대여 수량 한정 여부는 미확인 — 늦게 가면 없을 수 있다</li>
+          <li>그늘이 적은 구간이 있다. 9월 하순이면 아직 덥다</li>
+        </ul>
+      </dd>
+      <dt>이어붙이기</dt>
+      <dd>정원에서 나와 시오도메 쪽으로 나가면 <b>우나기노나루세 카렛타시오도메점</b>(동생 목록)이 가깝다. 저녁까지 한 번에 해결된다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">🍺 오쿠토버페스트 in 시바공원 ~Autumn~ <span class="pill only">9/23 최종일</span></div>
+      <div class="meta"><span>🚇 지하철 10분</span><span>💴 500엔 (초등생 이하 무료)</span><span>🕚 공휴일이라 11:00~22:00</span></div>
+      <div class="body">오나리몬역 앞 광장, 도쿄타워 배경. 3L 대형 조끼 「데카드링크」. <b>이날이 마지막</b>이라 놓치면 끝.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>왜 이날뿐인가</dt>
+      <dd>시바공원 회장은 <b>9/11~9/23</b>로 끝난다. 우리 도착일이 딱 마지막 날. 평일은 16시부터지만 <b>9/23은 공휴일이라 11:00부터</b> 열어서, 오후 도착인 우리도 갈 수 있다.</dd>
+      <dt>주의</dt>
+      <dd>
+        <ul>
+          <li><b>연휴 마지막 날 + 최종일</b>이라 저녁엔 만석을 각오해야 한다. <b>15~17시</b>가 그나마 여유</li>
+          <li>입장료 500엔 외에 <b>음식·음료는 전액 별도</b>. 셋이서 가볍게 먹어도 1만 엔 근처</li>
+          <li>야외 벤치형 좌석이라 오래 앉아 있기엔 불편하다</li>
+          <li>비 오면 결행, 악천후면 중지</li>
+        </ul>
+      </dd>
+      <dt>술 안 드시면</dt>
+      <dd>논알콜·소프트드링크도 있지만 굳이 500엔 내고 갈 이유는 없다. 같은 권역의 <b>도쿄타워 전망대</b>나 <b>조조지</b>로 대체하는 게 낫다.</dd>
+      <dt>대안 — 무료로 같은 걸</dt>
+      <dd><b>스카이트리타운 오쿠토버페스트</b>는 9/19~10/26이고 <b>입장 무료</b>다. 굳이 9/23에 500엔 내고 시바공원에 갈 필요가 없다면 이쪽을 다른 날 넣어도 된다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">🧵 네즈신사 「미치쿠사 데즈쿠리이치」 <span class="pill only">9/23 하루만</span> <span class="pill free">무료</span></div>
+      <div class="meta"><span>🚇 지하철 25분</span></div>
+      <div class="body">例大祭 기간에 붙어 열리는 수제품 장터. 공예·잡화 좋아하면.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>어떤 곳</dt>
+      <dd>네즈신사는 1706년 건립된 사전이 국가 중요문화재로 남아 있는 곳이다. 붉은 도리이가 줄지어 선 오토메이나리 참배길이 유명하다. 여기에 <b>9/23 하루만</b> 수제품 장터가 선다.</dd>
+      <dt>솔직한 판정</dt>
+      <dd><b>도착 첫날에 넣기엔 이동이 길다.</b> 긴자에서 지하철 25분 + 역에서 도보. 짐 풀고 체크인하고 나면 실질 3~4시간인데 왕복 1시간을 쓴다.
+      <br>장터 규모도 미확인이라 갔는데 작을 위험이 있다. <b>하마리큐가 안 끌릴 때의 3순위</b> 정도.</dd>
+      <dt>참고</dt>
+      <dd>네즈신사 例大祭 본행사(노점·연예 봉납)는 <b>9/26~27</b>이라 우리 일정과 어긋난다. 9/26은 정오에 출발하기 때문.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">☕ 마루노우치 KITTE — 날씨 나쁠 때</div>
+      <div class="meta"><span>🚇 한 정거장</span><span>🏠 전부 실내</span></div>
+      <div class="body">사자커피 쇼군라떼 + 네무로 하나마루 초밥 + <b>KITTE 가든</b> 무료 전망. 전부 동생 저장 목록에 있음.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>왜 넣어뒀나</dt>
+      <dd><b>보험이다.</b> 9월 하순은 태풍·게릴라 호우가 잦다. 도착일에 비가 오면 하마리큐도 오쿠토버페스트도 야외라 전부 무너진다. 그때 쓸 카드.</dd>
+      <dt>구성</dt>
+      <dd>
+        <ul>
+          <li><b>KITTE 가든</b> — 6층 옥상, <b>무료</b>. 도쿄역 붉은 벽돌 역사를 위에서 내려다본다. 야경 시간대가 좋다</li>
+          <li><b>사자커피 KITTE 마루노우치</b> — 쇼군라떼 (동생 커피 목록)</li>
+          <li><b>네무로 하나마루</b> — 회전초밥. 홋카이도 네무로산. 셋이 가볍게 먹기 좋다 (동생 맛집 목록)</li>
+          <li>같은 건물 인터미디어테크(무료 박물관)도 있다</li>
+        </ul>
+      </dd>
+      <dt>주변</dt>
+      <dd>도쿄역 반대편 지하로 <b>그란스타 도쿄</b>(9월 중순 리뉴얼)와 <b>TOFROM YAESU</b>(9/10 오픈)가 붙어 있다. 비 오는 날 전부 지하로 연결된다.</dd>
+    </dl></div></div>
+  </details>
+
+  <div class="warn"><b>1순위는 하마리큐.</b> 도보권이고, 짐 풀고 나온 직후 저강도이고, 화양산 들고 사진 찍기 좋다.</div>
+</section>
+
+<!-- ============ 9/24 ============ -->
+<section id="d24" hidden>
+  <h2>9/24 (목) · 쇼핑 메인데이 · <span style="color:var(--ok)">일본 평일</span></h2>
+  <p class="muted">이날 <b>갈라지는 게 효율이 가장 높다.</b> 동생은 시부야·하라주쿠 물량이 압도적이고, 나·엄마가 그 페이스를 따라갈 이유가 없다. 두 루트가 지하철 한 정거장 거리라 언제든 합칠 수 있다.</p>
+
+  <div class="split">
+    <div class="card">
+      <div class="ttl">🅐 동생 루트 — 시부야 → 하라주쿠</div>
+      <div class="body">
+        <b>오전</b> 스크램블 스퀘어(핸즈·sacai) → 시부야109 → <b>드림캡슐 MAGNET 5층</b>(가챠 100종+, 여유롭게 구경 가능)<br><br>
+        <b>점심</b> 마이센 히카리에 / Kiwamiya 시부야 파르코<br><br>
+        <b>오후</b> 시부야 파르코(휴먼메이드·CDG GIRL·비비안) → <b>C-Pla</b>(가챠 최대, 대신 복잡) → 시부야 로프트 → 나카가와 마사시치 → <b>NUIR VINTAGE</b>(큰 건물 5층에 숨어있음)<br><br>
+        <b>늦오후</b> 하라주쿠 — 래그태그 · BEAMS Women · OVERRIDE · Brandy Melville · POPPY<br><br>
+        <b>커피</b> 블루보틀 시부야
+      </div>
+    </div>
+    <div class="card">
+      <div class="ttl">🅑 나 + 엄마 — 오모테산도 → 다이칸야마</div>
+      <div class="body">
+        <b>오전</b> Spiral Market → pejite青山(그릇) → 미나 페르호넨 → 콘란샵 → Mame Kurogouchi<br><br>
+        <b>점심</b> <b>긴자 웨스트 아오야마 가든</b> — 오픈런 필요, 케이크·샌드위치·팬케이크<br><br>
+        <b>오후</b> 다이칸야마로 이동(시부야서 한 정거장) — <b>Hedy</b>(관리 새제품급, 직원 친절) + <b>MAISON DE VII</b> 바로 옆. 동네 자체가 산책하기 좋음<br><br>
+        <b>커피</b> Paddlers Coffee(커피 + 시그니처 핫도그)
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="ttl">🔗 재합류 18:00~19:00</div>
+    <div class="body">저녁 — 야키니쿠 호루이치 시부야(파·우설) 또는 긴자 복귀 후 하나야마우동 긴자</div>
+  </div>
+
+  <h3>이날 붙일 수 있는 것</h3>
+  <p class="hint">카드를 <b>누르면</b> 상세가 펼쳐집니다.</p>
+
+  <details class="card star">
+    <summary>
+      <div class="ttl">🆕 자유가오카 뮤즈스퀘어 <span class="pill new">9/17 오픈</span></div>
+      <div class="meta"><span>🚉 시부야→도요코선 10분, 역 도보 30초</span><span>🏬 B1~5F 약 60점포</span></div>
+      <div class="body">우리 방문 <b>6일 전</b>에 여는 신규 시설. 지상 15층·지하 3층 중 상업은 B1~5F.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>왜 지금 가야 하나</dt>
+      <dd>오픈 <b>일주일도 안 된</b> 시설이다. 한국 관광객 정보가 아직 안 돌 시점이고, <b>9/24는 목요일 평일</b>이라 오픈 직후 주말 혼잡을 피할 수 있다. 타이밍이 정확히 맞는다.</dd>
+      <dt>층별 — 우리한테 의미 있는 것만</dt>
+      <dd>
+        <ul>
+          <li><b>1F 스위츠</b> — 「자유가오카 몽블랑」(일본 몽블랑 발상지, 기존점 리뉴얼 이전 · 독일제 에스프레소 머신 살롱 신설) · 피에르 마르콜리니 · 바닐라빈즈 · <b>니니기</b>(교토 기온 신업태, 지유가오카 한정 화과자) · 파티스리 파블로프</li>
+          <li><b>B1 메이지야</b> — 지유가오카 첫 출점. 와인 카브·시음 카운터·베이커리 강화. <b>선물용 장보기에 좋다</b></li>
+          <li><b>2F Re:CENO</b> — <b>간토 최대 규모</b> 인테리어. 그 외 마크스앤웹, かぐれ, ACE 가방</li>
+          <li><b>3F</b> 한즈 · LIVING HOUSE · 호트만(타월) · CAFÉ AUX BACCHANALES</li>
+          <li><b>1~2F 패션</b> 유나이티드애로우즈 위민즈 · Theory · 코스메키친</li>
+        </ul>
+      </dd>
+      <dt>솔직히</dt>
+      <dd>패션 브랜드는 대부분 일본에서 이미 흔한 것들이다. <b>실질 가치는 1F 스위츠 라인과 B1 메이지야, 2~3F 생활·인테리어</b>에 있다. 옷 사러 갈 곳은 아니고, <b>먹을 것과 살림 물건</b> 보러 가는 곳.</dd>
+      <dt>⚠️ 확인 필요</dt>
+      <dd><b>영업시간이 아직 미발표</b>다(8/6 기준). 출발 전에 공식 사이트에서 반드시 확인할 것.</dd>
+      <dt>동선</dt>
+      <dd>시부야에서 도큐 도요코선 급행 약 10분, 역 도보 30초. <b>동생 시부야 코스 끝에 그대로 붙는다.</b> 다이칸야마도 같은 노선이라 🅑 루트에서 이어가도 된다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card moonc">
+    <summary>
+      <div class="ttl">🌕 무코지마 햐쿠카엔 「月見の会」 첫날 <span class="pill">9/24~26</span></div>
+      <div class="meta"><span>💴 입장 150엔</span><span>🕘 9:00~21:00 (최종입장 20:30)</span></div>
+      <div class="body">그림등롱 약 50기 점등 17:50~21:00 · 코토(箏) 연주 매일 18:00~20:00.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>9/24에 갈 이유가 있나</dt>
+      <dd><b>없다고 본다.</b> 핵심인 <b>말차 다회는 9/25·26만</b> 열리고, 9/24는 오소나에식(篠笛 연주, 17:00~17:30)만 추가된다.
+      <br>같은 데를 두 번 갈 게 아니면 <b>9/25에 몰아서 가는 게 맞다.</b> 여기 카드는 "9/24에도 열려 있다"는 사실 기록용.</dd>
+      <dt>9/24 밤을 쓰고 싶다면</dt>
+      <dd>시부야에서 종일 쇼핑한 날이라 이미 지쳐 있다. 스미다구까지 40분 더 가는 건 무리. <b>긴자 돌아와서 하마리큐 야간(도보권)</b>이 현실적이다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card moonc">
+    <summary>
+      <div class="ttl">🌕 도립 9정원 야간 연장 <span class="pill only">9/24~26만</span></div>
+      <div class="meta"><span>🕘 21:00까지 (평소 17:00)</span><span>💴 하마리큐 300엔</span></div>
+      <div class="body">하마리큐는 긴자 도보권. 저녁 먹고 걸어가면 된다.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>이 사흘이 특별한 이유</dt>
+      <dd>도립 정원은 평소 <b>17:00에 닫는다.</b> 그런데 「와가사로 정원 돌기」 기간 중 <b>9/24·25·26 사흘만 21:00까지</b> 연다. 우리 일정이 정확히 그 사흘에 걸린다. 우연이지만 크다.</dd>
+      <dt>어느 정원?</dt>
+      <dd>대상은 9곳 — <b>하마리큐</b> · 구시바리큐 · 고이시카와 고라쿠엔 · 리쿠기엔 · 무코지마 햐쿠카엔 등.
+      <br>긴자 숙소 기준 <b>하마리큐가 압도적으로 편하다</b>(도보 15~20분). 구시바리큐도 하마마츠초 쪽이라 가깝다.</dd>
+      <dt>주의</dt>
+      <dd>
+        <ul>
+          <li>야간엔 조명이 최소다. <b>발밑 조심</b>, 굽 낮은 신발</li>
+          <li>모기 — 물가 정원이라 9월에도 있다. 벌레기피제 있으면 좋다</li>
+          <li>화양산 대여가 야간에도 되는지는 <b>미확인</b></li>
+        </ul>
+      </dd>
+      <dt>추천 사용법</dt>
+      <dd>도착일(9/23) 낮에 한 번 가서 밝을 때 보고, <b>9/25 밤에 다시 가서 달을 본다.</b> 300엔이라 두 번 가도 부담 없다.</dd>
+    </dl></div></div>
+  </details>
+</section>
+
+<!-- ============ 9/25 ============ -->
+<section id="d25" hidden>
+  <h2>9/25 (금) · 추석 당일 · <span style="color:var(--moon)">日 中秋の名月</span></h2>
+
+  <div class="card moonc">
+    <div class="ttl">🌕 추석 당일이 일본 십오야(中秋の名月)와 같은 날</div>
+    <div class="body">음력이 같으니 당연하지만, <b>추석에 도쿄에서 달을 본다</b>는 게 이번 여행의 제일 좋은 장면이다.
+    <div class="meta" style="margin-top:8px"><span>🌙 도쿄 월출 <b>17:37</b></span><span>👀 관측 최적 <b>19~22시, 동~남쪽</b></span></div>
+    <span class="muted">2026년은 만월이 9/27로 이틀 어긋나지만 육안 차이는 거의 없음.</span></div>
+  </div>
+
+  <h3>낮 — 롯폰기 · 마루노우치 축</h3>
+  <ul class="tl">
+    <li><div class="time">오전</div><div class="what">도쿄 미드타운</div><div class="note">유니클로 · ITO-YA 문구 · 무인양품 · Trading Museum CDG · PLEATS PLEASE</div></li>
+    <li><div class="time">점심</div><div class="what">츠지한 아크힐즈점 (카이센동)</div><div class="note">웨이팅 있으면 무로마치점이 대안 — 동생 메모</div></li>
+    <li><div class="time">오후</div><div class="what">아자부다이 힐즈</div><div class="note">HARBS(과일 크레이프케이크) · 스즈카케(콩떡·모찌). 건물 자체가 볼거리</div></li>
+    <li><div class="time">늦오후</div><div class="what">마루노우치 · 도쿄역</div><div class="note">히가시야 만(모나카 아이스크림) · The Front Room(프렌치토스트) · 딘앤델루카 · 타치바나 카린토</div></li>
+    <li><div class="time">저녁</div><div class="what">키와미야 도쿄역점 / 우나기노나루세 시오도메</div></li>
+  </ul>
+
+  <h3>🌕 밤 — 츠키미 3안</h3>
+  <p class="hint">카드를 <b>누르면</b> 비교 근거가 펼쳐집니다.</p>
+
+  <details class="card star">
+    <summary>
+      <div class="ttl">1순위 · 하마리큐 온시 정원 야간</div>
+      <div class="meta"><span>🚶 긴자 도보 15~20분</span><span>💴 300엔</span><span>🕘 21:00까지</span></div>
+      <div class="body">가장 가깝고 싸다. 화양산 무료 대여. <b>저녁 먹고 걸어가면 됨.</b></div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>왜 1순위</dt>
+      <dd>셋 중 <b>유일하게 이동이 없다.</b> 긴자에서 저녁 먹고 걸어가면 된다. 300엔이라 별로였어도 손해가 없고, 지치면 바로 숙소로 돌아올 수 있다.
+      <br>달은 <b>동~남쪽</b>에 뜨는데, 하마리큐는 도쿄만 쪽으로 열려 있어 시야가 트여 있다.</dd>
+      <dt>시간표</dt>
+      <dd>
+        <ul>
+          <li><b>17:37</b> 월출 — 이때는 아직 낮다</li>
+          <li><b>18:30~19:00</b> 정원 도착. 해 지면서 등이 켜지는 시간</li>
+          <li><b>19:00~21:00</b> 관측 최적. 달이 충분히 올라온다</li>
+          <li><b>20:30</b> 최종입장 마감으로 잡아두는 게 안전 <span class="muted">(정확한 마감 시각 미확인)</span></li>
+        </ul>
+      </dd>
+      <dt>주의</dt>
+      <dd>야간 조명이 최소다. 발밑 조심, 굽 낮은 신발. 물가라 모기가 있다. 흐리면 달이 안 보이니 <b>당일 일기예보 확인</b>.</dd>
+      <dt>흐릴 때</dt>
+      <dd>달이 안 보여도 야간 개장 자체가 사흘뿐이라 값어치는 한다. 그래도 아쉬우면 <b>도쿄타워·시부야 스카이 같은 실내 전망</b>으로 바꾸는 게 낫다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">🍵 무코지마 햐쿠카엔 「月見の会」</div>
+      <div class="meta"><span>🚇 긴자에서 40분+</span><span>💴 입장 150엔 + 다회 1,500엔</span></div>
+      <div class="body"><b>말차 다회 15:00~20:00</b>, 회당 10명, 14:30~19:30 현장접수. 정취는 셋 중 최고.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>어떤 곳</dt>
+      <dd>에도 시대에 만들어진 <b>민간 정원</b>으로, 다이묘 정원과 달리 문인들이 초목을 즐기려고 꾸민 곳이다. 규모는 작지만 밀도가 높다. 「月見の会」는 여기서 매년 열리는 츠키미 행사.</dd>
+      <dt>프로그램 (9/25 기준)</dt>
+      <dd>
+        <ul>
+          <li><b>다회(말차 대접)</b> 15:00~20:00 — <b>1석 1,500엔</b>, 회당 10명, <b>14:30~19:30 현장접수</b>. 오나리자시키에서</li>
+          <li><b>그림등롱 약 50기 점등</b> 17:50~21:00</li>
+          <li><b>코토(箏) 연주</b> 18:00~20:00, 매점 앞 정자</li>
+          <li><b>신나이나가시</b> 14:30~ / 16:30~ — 에도 시대 거리 예능</li>
+        </ul>
+      </dd>
+      <dt>엄마 기준으로 보면</dt>
+      <dd><b>여기가 가장 좋다.</b> 말차 한 잔 마시면서 코토 연주 듣고 등롱 불빛 아래 달 보는 조합은 다른 두 곳엔 없다. 1,500엔이면 값도 싸다.
+      <br>다만 <b>왕복 1시간 반</b>을 쓴다. 그날 낮 일정을 가볍게 짜야 성립한다.</dd>
+      <dt>주의</dt>
+      <dd>다회는 <b>회당 10명 현장접수</b>다. 정원(定員)이 차면 못 한다. 다회가 목적이면 <b>17시 전에 도착</b>해서 먼저 접수하는 게 안전. 정확한 회차 간격은 미확인.</dd>
+      <dt>이렇게 하면 성립</dt>
+      <dd>9/25 낮을 <b>아사쿠사·캇파바시</b>로 잡으면 같은 스미다강 권역이라 자연스럽게 이어진다. 롯폰기·마루노우치 코스와는 안 맞는다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">🌙 문 아트 나이트 시모키타자와 2026 <span class="pill free">거리 감상 무료</span></div>
+      <div class="meta"><span>🚇 약 35분</span><span>📅 9/18~10/4, 15:00~21:00</span></div>
+      <div class="body">루크 제럼의 <b>직경 약 7m 달 조형물「Museum of the Moon」</b>. 9/25 당일 참가형 합창.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>무엇</dt>
+      <dd>제5회를 맞는 시모키타자와 전역 아트 페스티벌. 중심은 영국 작가 <b>루크 제럼</b>의 「Museum of the Moon」 — NASA 달 표면 이미지를 입힌 <b>직경 약 7m 구체</b>가 下北線路街 空き地에 뜬다. 거리 감상은 무료.</dd>
+      <dt>9/25에만 있는 것</dt>
+      <dd><b>「달빛 아래서 노래하는 ムーンライト」 참가형 합창</b>이 중추명월 당일에 열린다. 세부 시간·요금 <b>미확인</b> — 공식 사이트 확인 필요.</dd>
+      <dt>그 외</dt>
+      <dd>이머시브 시어터 「猫町」(영어 안내 있음, 유료 별도) · BONUS TRACK 발효백화점의 <b>「下北月餅」</b> 등 달 테마 상품.</dd>
+      <dt>여기가 맞는 경우</dt>
+      <dd>동생 쇼핑 목록에 <b>시모키타자와 매장</b>이 있다(Nishikaigan Ruby's). <b>오후에 시모키타 빈티지 쇼핑 → 저녁 그대로 문 아트 나이트</b>로 하루를 통째로 묶으면 이동 낭비가 없다. 그러면 이게 1순위가 된다.</dd>
+      <dt>안 맞는 경우</dt>
+      <dd>엄마 취향은 아닐 가능성이 높다. 시모키타자와는 좁은 골목에 사람이 많고 앉을 데가 적다. <b>셋이 같이 갈 곳은 아니고 찢어지는 날의 선택지</b>로 보는 게 맞다.</dd>
+    </dl></div></div>
+  </details>
+
+  <div class="warn">도쿄스카이트리 名月鑑賞会 / 시부야 스카이 OTSUKIMI NIGHT / 선샤인60 中秋の名月観賞会는 <b>2026년판 미발표</b>(8/6 기준). 2025년엔 명월 5~6주 전 발표 → <b>8월 하순~9월 초 재확인.</b></div>
+
+  <h3>하루를 통째로 바꿀 때</h3>
+  <div class="tw"><table>
+    <thead><tr><th>옵션</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><b>🎯 빈티지 명품 원정</b></td><td><b>Vintage Miyabi</b>(이와모토초) — 동생 메모가 유난히 길다. "1층 루이비통·특가존, 2층 나머지, 3층 샤넬 온리 / 소매업자도 사감 / <b>딱 한 군데만 간다면 여기</b>". 긴자에서 지하철 10분. <b>동생 진짜 1순위일 가능성 — 물어볼 것</b></td></tr>
+      <tr><td><b>🍳 캇파바시 + 아사쿠사</b></td><td><b>카마아사</b> "주방기구 가장 추천하는 곳". 센소지와 붙어 있어 관광+쇼핑이 동시에 됨. 엄마 만족도 높은 조합</td></tr>
+      <tr><td><b>🌃 신주쿠</b></td><td>산리오 Hotel Floria Tokyo(가부키초타워) · ITOYA 신주쿠 · 후운지 라멘 · 도쿄도청 전망대 무료</td></tr>
+      <tr><td><b>🧖 아무것도 안 하기</b></td><td>도미인이면 대욕장. <b>쇼핑 이틀 연속 풀가동은 30대라도 힘들다.</b> 하루쯤 오후를 비워두는 걸 권함</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ 9/26 ============ -->
+<section id="d26" hidden>
+  <h2>9/26 (토) · 출국일 · 오전만</h2>
+
+  <div class="alert">
+    <div class="h">❗ 12:00~12:30에는 숙소를 나서야 한다</div>
+    16:10 국제선 + 토요일 + 추석 귀국 수요 → <b>13:10~13:30 T3 도착</b> 목표. 긴자→하네다 30~40분.
+    <b>전날 밤에 짐 80%를 싸둘 것.</b>
+  </div>
+
+  <ul class="tl">
+    <li><div class="time">~08:00</div><div class="what">기상 · 조식</div></li>
+    <li><div class="time">08:30–10:00</div><div class="what">짐 정리 · 체크아웃 후 짐 맡김</div></li>
+    <li class="key"><div class="time">10:00–11:30</div><div class="what">기념품 마무리 — 긴자 도보권에서 끝난다</div>
+      <div class="note">오가와켄 신바시(레이즌위치) · 긴자 기무라야(단팥빵) · 아메리칸(타마고산도) · 아게산도 긴자(테이크아웃, 옆 공원에서) · <b>미쓰코시/마쓰야 데파치카 10:00 오픈</b></div></li>
+    <li class="key"><div class="time">12:00–12:30</div><div class="what">숙소 출발</div></li>
+    <li><div class="time">~13:20</div><div class="what">하네다 T3 · 체크인 · 수하물 위탁</div><div class="note">T3 에도코지 4F 쇼핑 충실 — 공항에서 해결해도 됨</div></li>
+    <li class="key"><div class="time">16:10 → 18:35</div><div class="what">출발 → 김포</div><div class="note">9/27(일) 하루 쉬고 9/28(월) 복귀</div></li>
+  </ul>
+
+  <div class="warn">생과자·냉장 디저트는 <b>당일 구매</b>. 유통기한 짧은 건 전부 이날로 몰 것.</div>
+
+  <h3>이날 걸리는 것</h3>
+  <p class="hint">카드를 <b>누르면</b> 상세가 펼쳐집니다.</p>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">🧵 사이토 요코 패치워크 퀼트전 「북유럽에 매료되어」 <span class="pill new">9/25 개막</span></div>
+      <div class="meta"><span>📍 마쓰야 긴자 8F</span><span>📅 9/25~10/12</span><span>💴 요금 미확인</span></div>
+      <div class="body">긴자 도보권. 30~60대 여성 취향 정면. 개막 직후라 붐비지 않을 가능성.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>왜 마지막 날에 넣었나</dt>
+      <dd><b>백화점 8층이라 10시 개점과 동시에 들어갈 수 있고</b>, 데파치카 기념품 쇼핑과 같은 건물에서 끝난다. 체크아웃하고 짐 맡긴 상태로 움직이기 딱 좋은 동선.</dd>
+      <dt>주의</dt>
+      <dd>
+        <ul>
+          <li><b>요금 미확인.</b> 마쓰야 긴자 유료 문화催事는 통상 800~1,200엔대 — 출발 전 공식 확인</li>
+          <li>개막 <b>둘째 날</b>이라 오히려 붐빌 수도 있다. 개점 직후를 노릴 것</li>
+          <li>퀼트에 관심 없으면 굳이 갈 이유는 없다. <b>데파치카가 본 목적</b>이고 이건 덤</li>
+        </ul>
+      </dd>
+      <dt>같은 건물에서</dt>
+      <dd>마쓰야 긴자 지하 식품층 — 선물용 과자를 한 번에 해결. 근처 도보권에 <b>긴자 기무라야</b>(단팥빵), <b>규쿄도</b>(문구·향), <b>긴자 로프트</b>가 전부 있다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">🆕 TOFROM YAESU / 그란스타 도쿄 <span class="pill new">9월 신규</span></div>
+      <div class="meta"><span>🚇 긴자에서 한 정거장</span><span>🧳 캐리어 끌고 가도 됨</span></div>
+      <div class="body">둘 다 <b>도쿄역 지하</b>. 비 와도 상관없고, 하네다 가는 길에 그대로 걸린다.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>TOFROM YAESU Shop &amp; Restaurant</dt>
+      <dd><b>2026/9/10 오픈</b>(일부 점포 순차). 지상 51층 복합빌딩의 상업존, 도쿄역 직결 지하. <b>총 68점포</b>로 음식점 중심. 국내 최대급 버스터미널·극장 병설.
+      <br><span class="muted">⚠️ 순차 개업이라 9월 하순에도 아직 안 연 매장이 있을 수 있다.</span></dd>
+      <dt>그란스타 도쿄 — 지하 마루노우치 개찰내 리뉴얼</dt>
+      <dd><b>2026년 9월 중순</b>(정확일 미발표). 8개월 공사 후 재개장, <b>26점포</b>. 이 중 <b>12개가 도쿄역 한정 브랜드</b>.
+        <ul>
+          <li><b>「호보니치 수첩」 일본 첫 기함점</b> — 문구 좋아하면 여기가 목적지가 된다</li>
+          <li>포트넘앤메이슨 테이크아웃</li>
+        </ul>
+      </dd>
+      <dt>⚠️ 함정</dt>
+      <dd>그란스타의 이 구역은 <b>JR 개찰 안쪽</b>이다. <b>입장권(140엔대)이나 승차권이 필요</b>하다. 그냥 걸어 들어갈 수 없으니 계획에 넣을 때 유의.</dd>
+      <dt>이렇게 쓰면 좋다</dt>
+      <dd>긴자에서 한 정거장이라 <b>캐리어를 끌고 도쿄역으로 이동 → 코인로커에 넣고 → 지하에서 마지막 쇼핑 → 그대로 하네다행</b>. 숙소로 되돌아갈 필요가 없어진다.</dd>
+    </dl></div></div>
+  </details>
+
+  <details class="card">
+    <summary>
+      <div class="ttl">❌ SHIBUYA MIYASHITA PARK BON DANCE</div>
+      <div class="meta"><span>📅 9/26~27</span><span>💴 무료</span></div>
+      <div class="body">날짜는 걸리지만 <b>우리는 정오에 출발</b>이라 못 간다. 기록만.</div>
+    </summary>
+    <div class="more"><div class="inner"><dl>
+      <dt>어떤 행사</dt>
+      <dd>MIYASHITA PARK 4층 잔디광장에서 열리는 <b>봉오도리 + DJ 댄스뮤직</b> 융합 축제. 시부야 인근 가게들의 푸드·드링크, 縁日 스타일 마켓까지. 입장 무료, 우천 중지.</dd>
+      <dt>왜 못 가나</dt>
+      <dd>개최는 <b>9/26~27</b>인데, 우리는 <b>9/26 12:00~12:30에 숙소를 나선다.</b> 저녁 행사라 물리적으로 불가능하다.</dd>
+      <dt>대신</dt>
+      <dd>봉오도리 분위기를 원하면 <b>9/23 시바공원 오쿠토버페스트</b>(음악 라이브 있음)나 <b>9/25 무코지마 햐쿠카엔</b>(코토 연주·신나이나가시)이 대체재다.</dd>
+    </dl></div></div>
+  </details>
+</section>
+
+<!-- ============ 상시 ============ -->
+<section id="always" hidden>
+  <h2>체류 기간 전체에 열려 있는 것</h2>
+
+  <h3>🍺 오쿠토버페스트 — 3개 회장</h3>
+  <div class="tw"><table>
+    <thead><tr><th>회장</th><th>기간</th><th>시간</th><th>입장료</th></tr></thead>
+    <tbody>
+      <tr><td>시바공원 ~Autumn~</td><td>9/11~<b>9/23</b></td><td>평일 16~22 / 토일축 11~22</td><td>500엔</td></tr>
+      <tr><td><b>도쿄 스카이트리타운</b> 4F</td><td><b>9/19~10/26</b></td><td>11:00~21:00 (금·토 21:30)</td><td><b style="color:var(--ok)">무료</b></td></tr>
+      <tr><td>라라포트 도요스 중정</td><td>9/18~10/12</td><td>평일 16~21:30 / 토일축 11~21:30</td><td><b style="color:var(--ok)">무료</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">시바공원은 9/23이 마지막이지만 <b>스카이트리타운은 전 일정 가능하고 입장 무료.</b></p>
+
+  <h3>🍰 몽블랑 시즌 개막 — 딱 이때다</h3>
+  <div class="tw"><table>
+    <thead><tr><th>메뉴</th><th>기간</th><th>장소</th><th>요금</th></tr></thead>
+    <tbody>
+      <tr><td>그랜드 하얏트 오텀 스위츠<br><span class="muted">구마모토산 밤 몽블랑 · <b>몽블랑 4종 비교세트</b></span></td><td>9/16~11/30<br>9:00~20:00</td><td>롯폰기 1F 피오렌티나</td><td>상품별<br><span class="muted">테이크아웃</span></td></tr>
+      <tr><td>웨스틴 오텀 하베스트 디저트 뷔페<br><span class="muted">밤·고구마 몽블랑 3종 비교</span></td><td><b>9/1~10/30 평일만</b><br>15:00~17:00 (90분제)</td><td>에비스 1F 더 테라스</td><td>성인 <b>6,800엔</b></td></tr>
+      <tr><td>웨스틴 가을 수확제 애프터눈티</td><td>9/5~11/3</td><td>에비스 로비라운지</td><td>주말·축일 8,900엔</td></tr>
+      <tr><td>인터컨티넨탈 도쿄베이 오텀 팰리스 AT</td><td>9/15~11/16</td><td>다케시바 <span class="muted">(긴자 15분)</span></td><td>8,250엔</td></tr>
+      <tr><td>호텔 춘잔소 가을 런치&amp;스위츠 뷔페<br><span class="muted">즉석 짜는 몽블랑 · 샤인머스캣</span></td><td>9/24~10/30 특정일</td><td>춘잔소</td><td>성인 9,800엔</td></tr>
+    </tbody>
+  </table></div>
+  <div class="warn">자유가오카 뮤즈스퀘어의 <b>「자유가오카 몽블랑」</b>(일본 몽블랑 발상지)까지 묶으면 <b>"몽블랑 순례"</b>가 하나의 테마로 성립한다. 동생 디저트 목록 28곳과도 결이 맞음.</div>
+
+  <h3>🖼 전시</h3>
+  <div class="tw"><table>
+    <thead><tr><th>전시</th><th>기간</th><th>장소</th></tr></thead>
+    <tbody>
+      <tr><td>대영박물관 일본미술 <b>百花繚乱</b></td><td>7/25~10/18</td><td>도쿄도미술관 (우에노)</td></tr>
+      <tr><td>いきもの超ワールド展</td><td>7/11~10/12</td><td>국립과학박물관 (우에노)</td></tr>
+      <tr><td>산리오 캐릭터즈 <b>Hotel Floria Tokyo</b></td><td>7/15~2027/5/31</td><td>도큐 가부키초타워 (신주쿠)</td></tr>
+      <tr><td>はてな展 / 微わかる展2</td><td>~9/30</td><td>세이부 시부야 <span class="muted">— 시부야 코스에 얹기 가능</span></td></tr>
+      <tr><td>100% 도라에몽&amp;프렌즈</td><td>3/27~9/30</td><td>TOKYO DREAM PARK (아리아케)</td></tr>
+      <tr><td>특별전 「大南極展」</td><td>7/1~9/27</td><td>일본과학미래관 (오다이바)</td></tr>
+      <tr><td>토니 아우슬러 개인전</td><td>7/3~9/27</td><td>TOKYO NODE (토라노몬힐즈)</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>🆕 신규 오픈</h3>
+  <div class="tw"><table>
+    <thead><tr><th>시설</th><th>오픈</th><th>위치</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><b>자유가오카 뮤즈스퀘어</b></td><td><b>9/17</b></td><td>지유가오카역 도보 30초</td><td>B1~5F 약 60점포. 자유가오카 몽블랑 · 마르콜리니 · 메이지야 · Re:CENO 간토 최대. <b>영업시간 미발표</b></td></tr>
+      <tr><td>TOFROM YAESU</td><td>9/10~순차</td><td>도쿄역 직결 지하</td><td>68점포, 음식점 중심. 일부 순차 개업</td></tr>
+      <tr><td>그란스타 도쿄 리뉴얼</td><td>9월 중순<br><span class="muted">정확일 미발표</span></td><td>도쿄역 지하 1F <b>개찰 안쪽</b></td><td>26점포, 도쿄역 한정 12개, 호보니치 수첩 일본 첫 기함점</td></tr>
+      <tr><td>NEWoMan 다카나와</td><td>3/28 (기오픈)</td><td>다카나와</td><td>하네다 오가는 길에 걸침</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="alert">
+    <div class="h">❌ 시부야 마루이는 2027년 여름</div>
+    일본 최초 본격 목조 상업시설로 화제였지만 <b>2026년 → 2027년으로 연기</b>됐다(2026/7 닛케이 「27년 여름 개업」, 마루이 담당자 인터뷰에서도 확인).
+    아직 "2026년 오픈"으로 적힌 정리 기사가 남아 있으니 <b>속지 말 것.</b> 인접한 시부야 모디는 정상 영업 중.
+  </div>
+
+  <h3>확인된 "없음" — 헛걸음 방지</h3>
+  <ul class="muted">
+    <li>9/23~26 창에 <b>도심 대형 마츠리 없음</b> (등록 기준 9/23=3건, 9/24=1건, 9/25=1건, 9/26=2건, 전부 소규모)</li>
+    <li>긴자권 신사 例大祭는 5~6월 집중 / 築地秋まつり·中央区観光商業まつり는 10월</li>
+    <li>오에도 골동시(유라쿠초)는 9월엔 9/12·9/21만 → 창 밖</li>
+    <li>이노카시라하치만구 例大祭 9/30~10/1, 롯폰기 아트나이트 10/31~11/1 → 창 밖</li>
+  </ul>
+</section>
+
+<!-- ============ 동생 목록 ============ -->
+<section id="lists" hidden>
+  <h2>동생 저장 목록 (Google Maps 공유 목록)</h2>
+  <p class="muted">보내준 링크 11개 중 중복 5개 제외, <b>고유 목록 6개 · 총 140곳</b>.</p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="n">53</div><div class="l">쇼핑</div></div>
+    <div class="stat"><div class="n">40</div><div class="l">맛집</div></div>
+    <div class="stat"><div class="n">28</div><div class="l">디저트</div></div>
+    <div class="stat"><div class="n">9</div><div class="l">주전부리</div></div>
+    <div class="stat"><div class="n">8</div><div class="l">커피 · 차</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">호텔 후보</div></div>
+  </div>
+
+  <h3>지도에 찍으면 두 덩어리로 갈린다</h3>
+
+  <div class="card star">
+    <div class="ttl">축 A — 긴자 · 마루노우치 · 신바시 · 히비야 <span class="pill">먹는 것 전부</span></div>
+    <div class="body">디저트 9곳, 맛집 11곳, 주전부리 대부분, 기념품 2곳, 커피 2곳이 여기 몰려 있다.
+    <br><br><span class="muted">팡 메종 긴자 · DOLCE TACUBO GINZA · WAKO 티살롱 · 긴자 기무라야 · 히가시야 만 · The Front Room · 하야시야신베에 · Del'immo · 딘앤델루카 · 사자커피 KITTE · 글릿치 커피 · 긴자 텐쿠니 · 긴자 돈카츠 사이토 · 하나야마우동 · Tonkatsu Marushichi · 아부라소바 긴자구미 · 멘야 횻토코 · 이치란 신바시 · 네무로 하나마루 · 키와미야 도쿄역 · 우나기노나루세 · 아게산도 · 아메리칸 · 오가와켄 신바시 · 규쿄도 · 긴자 로프트 · 무인양품 긴자 · 유니클로 도쿄</span></div>
+  </div>
+
+  <div class="card">
+    <div class="ttl">축 B — 시부야 · 하라주쿠 · 오모테산도 · 아오야마 · 다이칸야마 <span class="pill">쇼핑 전부</span></div>
+    <div class="body">쇼핑 53곳 중 <b>약 30곳</b>이 이 권역.
+    <br><br><span class="muted">시부야109 · 시부야 파르코(CDG GIRL·휴먼메이드·비비안) · 시부야 로프트 · 핸즈 · 나카가와 마사시치 · sacai · C-Pla · 드림캡슐 MAGNET · NUIR VINTAGE · BEAMS Women · 래그태그 · OVERRIDE · Brandy Melville · POPPY · Spiral Market · pejite青山 · Mame Kurogouchi · URBANIC30 · 미나 페르호넨 · 콘란샵 · MAISON DE VII · Hedy · Paddlers · 블루보틀 · 마이센 · Kiwamiya · 야키니쿠 호루이치</span></div>
+  </div>
+
+  <div class="card">
+    <div class="ttl">축 C — 롯폰기 · 미드타운 · 아자부다이 <span class="pill">중간 규모</span></div>
+    <div class="body"><span class="muted">유니클로 미드타운 · ITO-YA 미드타운 · 무인양품 · Trading Museum CDG · PLEATS PLEASE · DEAN &amp; DELUCA · HARBS 아자부다이 · 스즈카케 · 츠지한 아크힐즈</span></div>
+  </div>
+
+  <div class="card">
+    <div class="ttl">산발 — 동선 밖</div>
+    <div class="body"><span class="muted">캇파바시 카마아사 · <b>Vintage Miyabi</b>(이와모토초) · 시모키타자와 · 기요스미 · 쓰키시마 몬자야키 · 이케부쿠로 히모카와 · 신주쿠 후운지 · 니혼바시 츠지한 무로마치 · 타치바나 카린토</span></div>
+  </div>
+
+  <div class="alert">
+    <div class="h">⚠️ 정리가 필요한 것 3가지</div>
+    <b>1. 도쿄가 아닌 게 섞여 있다</b> — 이몬네 하카타점 · 야키니쿠 니쿠마루 하루요시점(후쿠오카) · 코토부키세이안 가마쿠라. 동생에게 필터 요청.<br>
+    <b>2. Sanrio Cute Cube Harajuku는 폐업</b> — 구글 지도에 "폐업함" 표시. 산리오는 가부키초타워 Hotel Floria로 대체.<br>
+    <b>3. 140곳은 2.5일에 절대 안 들어간다</b> — Top 5 우선순위부터 받을 것.
+  </div>
+
+  <h2>🏨 숙소 — 긴자로 확정 권장</h2>
+  <p class="muted">동생이 저장한 호텔 2곳이 <b>둘 다 긴자</b>이고, 저장 장소 밀집도 1위도 긴자 축이다. 근거가 일치한다.</p>
+
+  <div class="split">
+    <div class="card">
+      <div class="ttl">도미 인 프리미엄 긴자</div>
+      <div class="meta"><span>⭐ 3성</span><span>📊 4.4 (524)</span></div>
+      <div class="body"><b>대욕장(온천) 있음.</b> 야식 라멘 무료 서비스가 도미인 특징. <b>엄마·휴식 니즈에 가장 잘 맞음.</b> 방이 좁아도 대욕장이 있어 견딜 만하다.</div>
+    </div>
+    <div class="card">
+      <div class="ttl">미쓰이 가든 호텔 긴자 고초메</div>
+      <div class="meta"><span>⭐ 4성</span><span>📊 4.3 (1,298)</span></div>
+      <div class="body">상위 등급, 리뷰 수 압도적. 객실·조식 퀄리티 우위.</div>
+    </div>
+  </div>
+
+  <div class="card star">
+    <div class="ttl">긴자를 미는 이유 4가지</div>
+    <div class="body">
+      <b>1.</b> 저녁·아침·기념품이 전부 숙소 도보권에서 해결된다 (축 A가 통째로 긴자)<br>
+      <b>2.</b> 하네다에서 게이큐 → 아사쿠사선 직통, <b>환승 없이 약 30분</b><br>
+      <b>3.</b> 시부야까지 20분 내 — 축 B 원정이 부담 없다<br>
+      <b>4.</b> 찢어질 때 재집결이 쉽다 — 밤늦게까지 열려 있고 대기 장소가 많다
+    </div>
+  </div>
+
+  <div class="alert">
+    <div class="h">⏰ 숙소는 이번 주 안에</div>
+    <b>9/19~23 실버위크가 도쿄 숙박 수요 피크.</b> 9/23 첫날 1박이 병목이다.
+    3인이면 트리플룸 또는 트윈+싱글 — 일본 호텔은 트리플이 귀하니 <b>"3명 숙박 가능" 조건</b>으로 검색할 것.
+  </div>
+</section>
+
+<!-- ============ 준비 ============ -->
+<section id="prep" hidden>
+  <h2>지금 처리할 것</h2>
+  <ul class="ck">
+    <li><input type="checkbox" id="c1"><label for="c1"><span class="due">오늘내일</span> <b>3인 발권</b> — 오는편 잔여 4석. 놓치면 대안 없음</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2"><span class="due">이번 주</span> <b>긴자 호텔 예약</b> — 실버위크 겹쳐 9/23이 병목. "3인 숙박 가능" 조건</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3"><span class="due">지금</span> <b>여권 유효기간 3인 전원</b> — 2027-03-26 이후 만료여야 안전</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4"><span class="due">발권 직후</span> 좌석 지정 — 3인 붙어 앉으려면 빠를수록</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5"><span class="due">8월 중</span> 여행자보험 3인 — 9월 하순은 태풍 시즌</label></li>
+    <li><input type="checkbox" id="c6"><label for="c6"><span class="due">8월 중</span> 동생에게 <b>도쿄 외 저장분 정리</b> 요청 (후쿠오카·가마쿠라 섞여 있음)</label></li>
+    <li><input type="checkbox" id="c7"><label for="c7"><span class="due">8월 중</span> 동생에게 <b>"꼭 가야 하는 곳 Top 5"</b> — 140곳은 2.5일에 안 들어감</label></li>
+    <li><input type="checkbox" id="c8"><label for="c8"><span class="due">1주 전</span> Visit Japan Web 3인 각자 등록</label></li>
+    <li><input type="checkbox" id="c9"><label for="c9"><span class="due">1주 전</span> eSIM 3개 (엄마 것은 설치 도와드려야 함)</label></li>
+    <li><input type="checkbox" id="c10"><label for="c10"><span class="due">1주 전</span> 엔화 — 엄마는 현금 선호일 가능성, 소액권 확보</label></li>
+    <li><input type="checkbox" id="c11"><label for="c11"><span class="due">출발 전</span> 복용약 + 영문 처방전 사본</label></li>
+    <li><input type="checkbox" id="c12"><label for="c12"><span class="due">9월 초</span> 오픈런·웨이팅 매장 영업시간 재확인 (긴자 웨스트, 하나야마우동, 츠지한)</label></li>
+  </ul>
+
+  <h2>⚠️ 리스크</h2>
+  <div class="tw"><table>
+    <thead><tr><th>리스크</th><th>내용</th><th>대응</th></tr></thead>
+    <tbody>
+      <tr><td><b>태풍</b></td><td>9월 하순은 관동 태풍 접근 빈도 높음. 게릴라 호우도 잦음</td><td>보험 지연·결항 보장 / <b>긴자·마루노우치는 지하로 거의 연결돼 비에 강함</b> — 우천 시 이쪽으로 전환</td></tr>
+      <tr><td><b>오는편 4석</b></td><td>변경 여지 없음</td><td>9/26 출발 시각 절대 밀지 말 것</td></tr>
+      <tr><td><b>쇼핑 짐 폭증</b></td><td>위탁수하물 1인 1개뿐. 빈티지·그릇·생활용품은 부피 큼</td><td><b>빈 보조가방 1개씩</b> 챙기거나 현지 캐리어 구매 고려. 그릇은 파손 대비 포장 필수</td></tr>
+      <tr><td><b>면세 한도</b></td><td>1인 미화 800달러. 3인 쇼핑 목적이면 넘길 수 있음</td><td>영수증 보관, 초과분 자진신고가 유리</td></tr>
+      <tr><td><b>잔여 더위</b></td><td>9월 하순 도쿄 평균 최고 <b>약 25℃</b>, 최저 18℃. 잔서 길어지는 추세</td><td>반팔 + 얇은 겉옷 레이어링. 접이우산 필수</td></tr>
+      <tr><td><b>140곳 욕심</b></td><td>2.5일에 물리적으로 불가능</td><td>Top 5 먼저, 나머지는 "지나가면 들르기"</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>📆 8월 하순~9월 초에 반드시 다시 볼 것</h2>
+  <p class="muted">8/6 조사 시점에 아직 안 나온 것들. 발표되면 일정이 바뀔 수 있다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>대상</th><th>발표 예상</th></tr></thead>
+    <tbody>
+      <tr><td><b>백화점 9월 하순 催事·물산전</b><br><span class="muted">긴자 미쓰코시·마쓰야 / 신주쿠 이세탄·루미네 / 시부야 히카리에·파르코 / 도쿄역 다이마루·KITTE — 현재 <b>전부 미발표</b></span></td><td>8월 중순~9월 초</td></tr>
+      <tr><td><b>호텔·전망대 츠키미 이벤트</b><br><span class="muted">스카이트리 名月鑑賞会 / 시부야 스카이 OTSUKIMI NIGHT / 선샤인60 / 하마리큐 お月見散歩</span></td><td>8월 하순~9월 초</td></tr>
+      <tr><td>백화점 지하 밤·고구마 페어 (이세탄 몽블랑 특집 등)</td><td>9월 초</td></tr>
+      <tr><td>GINZA SIX 팝업 9월 하순분</td><td>9월 초</td></tr>
+      <tr><td>네즈신사 令和8年 例大祭 확정 공지<br><span class="muted">공식 연간표 기준(9/26·27)이며 개별 공지는 8/6 시점 미게시</span></td><td>8월 중순</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="alert">
+    <div class="h">🚫 검색할 때 조심할 것</div>
+    「이세탄 신주쿠 9/18~24 이탈리아전」 같은 결과가 뜨는데 <b>2024년 자료다.</b>
+    백화점 催事는 반드시 각 점 공식 사이트에서 <b>연도를 확인</b>해야 한다.
+  </div>
+
+  <h2>🔍 미확인 항목</h2>
+  <div class="tw"><table>
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>동생 Top 5</td><td>140곳 중 우선순위 미확인 — <b>이게 나와야 9/24·25가 확정됨</b></td></tr>
+      <tr><td>Vintage Miyabi 비중</td><td>메모 길이로 보아 동생 최우선일 가능성. 하루를 뺄 만한가?</td></tr>
+      <tr><td>호텔 3인 가능 여부</td><td>도미인 / 미쓰이 가든 긴자 트리플룸 유무</td></tr>
+      <tr><td>뮤즈스퀘어 영업시간</td><td>미발표 — 개업 직전 공개 예상</td></tr>
+      <tr><td>그란스타 도쿄 리뉴얼 정확일</td><td>「9월 중순」까지만 발표</td></tr>
+      <tr><td>마쓰야 긴자 퀼트전 요금</td><td>미확인 (마쓰야 유료 문화催事 통상 800~1,200엔대)</td></tr>
+      <tr><td>HARBS 중복</td><td>8월 도쿄 여행에서 이미 갈 가능성 → 9월엔 대체할지</td></tr>
+      <tr><td>임시공휴일</td><td>8/5 기준 미지정</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>📌 다음 결정 3가지</h2>
+  <div class="card star"><div class="body">
+    <b>1.</b> 호텔 — 도미인 프리미엄 긴자(대욕장) vs 미쓰이 가든 긴자 고초메(상위등급)? <b>3인 방 여부 먼저 확인</b><br><br>
+    <b>2.</b> 동생의 "꼭 가야 하는 곳" Top 5 — 이게 나와야 9/24·25가 확정됨<br><br>
+    <b>3.</b> 9/25를 롯폰기·마루노우치로 갈지, 빈티지 명품 원정(Vintage Miyabi)이나 캇파바시+아사쿠사로 갈지
+  </div></div>
+</section>
+
+<footer>
+  <b>출처</b>
+  <ul>
+    <li><a href="https://www.nao.ac.jp/astro/sky/2026/09-topics03.html">국립천문대 — 中秋の名月 2026/9/25</a></li>
+    <li><a href="https://www.tokyo-park.or.jp/park/mukojima-hyakkaen/news/2026/2026_9_24_26.html">무코지마 햐쿠카엔 月見の会</a></li>
+    <li><a href="https://www.kensetsu.metro.tokyo.lg.jp/information/press/r8/06/2026061001">도쿄도 건설국 — 도립 9정원 和傘で庭園めぐり</a></li>
+    <li><a href="https://jiyugaoka-muse-square.jp/">자유가오카 뮤즈스퀘어 공식</a></li>
+    <li><a href="https://www.nikkei.com/article/DGXZQOUC103770Q6A710C2000000/">닛케이 — 시부야 마루이 27년 여름 개업</a></li>
+    <li><a href="https://moonartnightfes.com/">문 아트 나이트 시모키타자와 2026</a></li>
+    <li><a href="https://www.enjoytokyo.jp/feature/matsuri_autumn/cal_sept_tokyo/">레츠엔조이도쿄 — 9월 가을 이벤트</a></li>
+    <li><a href="https://www.oktober-fest.jp/shiba/">오쿠토버페스트 2026 일본 공식</a></li>
+    <li><a href="https://nedujinja.or.jp/saiten/">네즈신사 연간 제전표</a></li>
+    <li><a href="https://bestcalendar.jp/2026/9/holidays">2026년 9월 일본 축일 · 실버위크</a></li>
+    <li><a href="http://www.haneda-airport.jp/inter/access/train.html">하네다 국제선 액세스</a></li>
+    <li>동생 Google Maps 공유 목록 6종 — 쇼핑 53 / 맛집 40 / 디저트 28 / 커피·차 8 / 주전부리 9 / 여행계획 2</li>
+  </ul>
+  <p>작성 2026-08-05 · 최종 조사 2026-08-06 · 미확인 항목은 9월 초 재조회 필요</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('nav.tabs button');
+  var secs = document.querySelectorAll('section[id]');
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.setAttribute('aria-selected','false'); });
+      b.setAttribute('aria-selected','true');
+      secs.forEach(function(s){ s.hidden = (s.id !== b.dataset.t); });
+      window.scrollTo({top:0, behavior:'instant'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
