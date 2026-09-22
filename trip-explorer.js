@@ -12,6 +12,9 @@ window.initTripExplorer=function(){
  var days=data.days,photos=data.photos,notes=data.notes||{},keys=Object.keys(days),current=keys[0],filter='전체',selected=-1;
  var list=document.getElementById('trip-list'),switcher=document.getElementById('trip-day-switch'),caption=document.getElementById('trip-map-caption');
  var map=null,layer=null,line=null,markers=[],visibleIndices=[],reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var nearby=document.createElement('section');nearby.className='trip-nearby';root.querySelector('.trip-shell').after(nearby);
+ function renderNearby(key){nearby.innerHTML='<h3>시간 남으면, 이 근처</h3><p>이전에 저장한 후보 중 현재 동선과 가까운 곳입니다. 방문 확정 일정이 아니며, 영업·대기 상황은 지도에서 확인해 주세요.</p>';
+ (data.nearby&&data.nearby[key]||[]).forEach(function(g){var d=document.createElement('details');d.className='nearby-group';d.innerHTML='<summary>'+escapeText(g.title)+'<small>'+(g.items.length?g.items.length+'곳 · 펼치기':'돌아갈 시간 확인')+'</small></summary><div class="nearby-content">'+(g.image?'<img class="nearby-banner" loading="lazy" src="'+escapeText(g.image)+'" alt="'+escapeText(g.caption)+'"><small class="nearby-caption">'+escapeText(g.caption)+' · 지역 참고 사진</small>':'')+'<p class="nearby-intro">'+escapeText(g.note)+'</p><div class="nearby-items">'+g.items.map(function(p){return '<article class="nearby-place"><h4>'+escapeText(p.name)+'</h4><p>'+escapeText(p.note)+'</p><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.query)+'">위치·영업 확인 ↗</a></article>'}).join('')+'</div></div>';nearby.appendChild(d)})}
  var filters=document.createElement('div');filters.className='trip-filter';filters.setAttribute('aria-label','장소 종류');switcher.after(filters);
  var tools=document.createElement('div');tools.className='trip-map-tools';
  tools.innerHTML='<button type="button">전체 위치 보기</button>';node.parentElement.appendChild(tools);
@@ -47,7 +50,7 @@ window.initTripExplorer=function(){
   setTimeout(function(){map.invalidateSize();fit(false)},70);
  }
  function renderDay(key){
-  current=key;selected=-1;list.innerHTML='';visibleIndices=[];
+  current=key;selected=-1;list.innerHTML='';visibleIndices=[];renderNearby(key);
   switcher.querySelectorAll('button').forEach(function(b){var active=b.dataset.day===key;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
   var day=days[key];root.style.setProperty('--trip-color',day.color);
   day.places.forEach(function(p,i){
@@ -67,7 +70,9 @@ window.initTripExplorer=function(){
  ['전체','먹고 마시기','쇼핑','산책·관광','이동·숙소'].forEach(function(name){var b=document.createElement('button');b.type='button';b.textContent=name;b.setAttribute('aria-pressed',String(name===filter));b.addEventListener('click',function(){filter=name;filters.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});renderDay(current)});filters.appendChild(b)});
  keys.forEach(function(key){var d=days[key],b=document.createElement('button');b.type='button';b.dataset.day=key;b.innerHTML='<b>'+escapeText(d.label)+'</b><span>'+escapeText(d.short)+'</span>';b.addEventListener('click',function(){renderDay(key)});switcher.appendChild(b)});
  document.querySelectorAll('[data-trip-day]').forEach(function(b){b.addEventListener('click',function(){filter='전체';filters.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x.textContent===filter))});renderDay(b.dataset.tripDay);changeView('list');root.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})})});
- function tryMap(){if(map||!window.L)return;map=L.map(node,{scrollWheelZoom:false,attributionControl:true});L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);layer=L.layerGroup().addTo(map);line=L.layerGroup().addTo(map);renderMap()}
+ function tryMap(){if(map||!window.L)return;map=L.map(node,{scrollWheelZoom:false,attributionControl:true});var tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,referrerPolicy:'origin',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+var warning=document.createElement('div');warning.className='trip-map-failure';warning.hidden=true;warning.innerHTML='<b>배경 지도를 불러오지 못했어요.</b><p>아래 링크에서 저장한 전체 지도를 확인해 주세요.</p><a href="'+escapeText(data.mapUrl)+'" target="_blank" rel="noreferrer">Google 지도 열기 ↗</a>';node.parentElement.appendChild(warning);var tileErrors=0;if(tiles.on)tiles.on('tileerror',function(){if(++tileErrors>=2)warning.hidden=false});
+layer=L.layerGroup().addTo(map);line=L.layerGroup().addTo(map);renderMap()}
  renderDay(keys[0]);tryMap();
  if(!map){node.innerHTML='<p class="trip-empty">지도를 불러오는 중입니다. 연결이 어려우면 장소 카드의 Google 지도를 이용하세요.</p>';var tries=0,timer=setInterval(function(){if(window.L){node.innerHTML='';tryMap();clearInterval(timer)}else if(++tries>=20)clearInterval(timer)},500)}
  return true;
