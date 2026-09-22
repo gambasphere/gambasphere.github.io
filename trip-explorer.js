@@ -1,80 +1,75 @@
+
 (function(){
-  var DAYS={
-    d23:{label:'9/23 수',short:'긴자',color:'#e8734a',places:[
-      ['도쿄 국제공항',35.5482964,139.7779951,'공항'],['히가시긴자 역',35.6697003,139.7671399,'이동'],['도미 인 프리미엄 긴자',35.6676219,139.7657268,'숙소'],['네무로하나마루 긴자점',35.6722448,139.7624127,'식사'],['쿠냐네노 미세',35.6744744,139.7630037,'쇼핑'],['루미네 유라쿠쵸',35.6735982,139.7628443,'쇼핑'],['도쿄 규쿄도 긴자 본점',35.6710891,139.7646112,'쇼핑'],['지유 긴자점',35.670881,139.7642627,'쇼핑'],['긴자 로프트',35.6741115,139.766261,'쇼핑'],['긴자 이토야',35.6731273,139.7672138,'쇼핑'],['enherb 미쓰코시 긴자',35.6711718,139.7658598,'쇼핑'],['긴자 츠타야 서점',35.6694161,139.7642674,'쇼핑'],['DOLCE TACUBO GINZA',35.6683222,139.7634875,'디저트'],['FamilyMart',35.6673884,139.7656471,'편의점'],['세븐일레븐 긴자7초메히가시',35.6671611,139.765394,'편의점']
-    ]},
-    d24:{label:'9/24 목',short:'도쿄타워 · 아자부다이',color:'#5fbf8f',places:[
-      ['미쓰이 가든 호텔 긴자 고초메',35.6688823,139.7667539,'숙소'],['Ochiairo Steak House Tokyo',35.6612443,139.7406186,'식사'],['도쿄 타워',35.6585805,139.7454329,'관광'],['시바 공원',35.6561695,139.7483555,'산책'],['아자부다이 힐즈',35.6615447,139.7408302,'쇼핑'],['FAMIMA FLAGSHIP STORE',35.6625453,139.7443416,'편의점'],['The Conran Shop Tokyo Store',35.6610359,139.7401614,'쇼핑'],['SABOE TOKYO',35.6620914,139.7415446,'차'],['TEAPOND Azabudai Hills',35.662173,139.7422863,'차'],['HARBS Azabudai Hills',35.6618556,139.7414525,'카페'],['스즈카케 아자부다이힐스',35.6622018,139.7425164,'디저트'],['히비야',35.6748881,139.7595952,'산책'],['츠키시마 몬자 타마토야 히비야',35.6727357,139.7604427,'식사'],['OK Ginza Store',35.6737637,139.7651281,'장보기'],['다이소 마로니에 게이트 긴자',35.6737364,139.7651894,'쇼핑'],['로손',35.6683424,139.7667389,'편의점']
-    ]},
-    d25:{label:'9/25 금',short:'오모테산도 · 아오야마',color:'#8fb7f5',places:[
-      ['오모테산도',35.6652511,139.7120921,'산책'],['MERCER BRUNCH TERRACE HOUSE TOKYO',35.6631946,139.7099114,'브런치'],['GYRE',35.6673861,139.7069111,'쇼핑'],['Spiral Market',35.6635829,139.7117499,'쇼핑'],['call cafe 家と庭',35.6636179,139.7117335,'카페'],['아오야마 플라워마켓 티하우스',35.6622458,139.7134816,'카페'],['미쓰이 가든 호텔 긴자 고초메',35.6688823,139.7667539,'숙소'],['토리긴 솥밥 꼬치구이 본점',35.6712821,139.7636683,'저녁'],['Kyoto Ramen MORRY Ginza',35.6685238,139.7647652,'저녁']
-    ]},
-    d26:{label:'9/26 토',short:'하타가야 → 하네다',color:'#f2b544',places:[
-      ['Paddlers Coffee',35.6746807,139.6787654,'커피'],['Equal',35.6750336,139.6786999,'베이커리'],['御菓子所 胡禾',35.6749306,139.6791317,'화과자'],['하타가야',35.677314,139.6768408,'동네'],['미쓰이 가든 호텔 긴자 고초메',35.6688823,139.7667539,'숙소'],['도쿄 국제공항',35.5482964,139.7779951,'공항']
-    ]}
-  };
-
-  window.initTripExplorer=function(){
-    if(!window.L) return false;
-    var mapNode=document.getElementById('trip-map');
-    if(!mapNode || mapNode.dataset.ready==='1') return false;
-    var list=document.getElementById('trip-list');
-    var switcher=document.getElementById('trip-day-switch');
-    var caption=document.getElementById('trip-map-caption');
-    var explorer=document.querySelector('.trip-explorer');
-    if(!list || !switcher || !caption || !explorer) return false;
-    mapNode.dataset.ready='1';
-
-    var map=L.map(mapNode,{zoomControl:true,scrollWheelZoom:false,attributionControl:true});
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
-    var markerLayer=L.layerGroup().addTo(map), routeLayer=L.layerGroup().addTo(map), markers=[];
-
-    function markerIcon(n,color){
-      return L.divIcon({className:'',html:'<div class="trip-marker" style="background:'+color+'"><span>'+n+'</span></div>',iconSize:[28,28],iconAnchor:[14,27],popupAnchor:[0,-27]});
-    }
-    function focusPlace(index,scroll){
-      var m=markers[index],cards=list.querySelectorAll('.trip-card');
-      cards.forEach(function(c){c.classList.remove('active')});
-      if(cards[index]){
-        cards[index].classList.add('active');
-        if(scroll) cards[index].scrollIntoView({behavior:'smooth',block:'nearest'});
-      }
-      if(m){map.panTo(m.getLatLng(),{animate:true});m.openPopup();}
-    }
-    function renderDay(key){
-      var day=DAYS[key];
-      markerLayer.clearLayers(); routeLayer.clearLayers(); markers=[]; list.innerHTML='';
-      switcher.querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b.dataset.day===key)});
-      explorer.style.setProperty('--trip-color',day.color);
-      var bounds=[];
-      day.places.forEach(function(p,i){
-        var latlng=[p[1],p[2]],num=i+1; bounds.push(latlng);
-        var marker=L.marker(latlng,{icon:markerIcon(num,day.color)}).bindPopup('<b>'+num+'. '+p[0]+'</b><br>'+p[3]);
-        marker.on('click',function(){focusPlace(i,true)}); marker.addTo(markerLayer); markers.push(marker);
-        var card=document.createElement('div');
-        card.className='trip-card'; card.style.setProperty('--trip-color',day.color);
-        card.innerHTML='<div class="trip-num">'+num+'</div><div class="trip-copy"><b>'+p[0]+'</b><span>'+p[3]+' · KMZ 핀 '+num+'</span></div><a class="trip-go" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&query='+p[1]+','+p[2]+'">지도 ↗</a>';
-        card.addEventListener('click',function(e){if(e.target.closest('a'))return;focusPlace(i,false)});
-        list.appendChild(card);
-      });
-      L.polyline(bounds,{color:day.color,weight:3,opacity:.72,dashArray:'7 7'}).addTo(routeLayer);
-      map.fitBounds(bounds,{padding:[32,32],maxZoom:14});
-      caption.innerHTML='<b>'+day.label+' · '+day.short+'</b>'+day.places.length+'개 핀 · 점선은 KMZ 핀 순서를 잇는 개략선';
-      setTimeout(function(){map.invalidateSize()},80);
-    }
-    Object.keys(DAYS).forEach(function(key){
-      var d=DAYS[key],b=document.createElement('button');
-      b.type='button'; b.dataset.day=key; b.style.setProperty('--trip-color',d.color);
-      b.innerHTML='<b>'+d.label+'</b><span>'+d.short+'</span>';
-      b.addEventListener('click',function(){renderDay(key)}); switcher.appendChild(b);
-    });
-    renderDay('d23');
-    return true;
-  };
-
-  function initPlainPage(){
-    if(document.getElementById('trip-map')) window.initTripExplorer();
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initPlainPage,{once:true});
-  else setTimeout(initPlainPage,0);
+'use strict';
+function escapeText(value){return String(value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+window.initTripExplorer=function(){
+ var root=document.querySelector('.trip-explorer'),node=document.getElementById('trip-map'),dataNode=document.getElementById('trip-data');
+ if(!root||!node||!dataNode||root.dataset.ready==='1')return false;
+ var data;try{data=JSON.parse(dataNode.textContent)}catch(e){return false}
+ root.dataset.ready='1';
+ var days=data.days,photos=data.photos,notes=data.notes||{},keys=Object.keys(days),current=keys[0],filter='전체',selected=-1;
+ var list=document.getElementById('trip-list'),switcher=document.getElementById('trip-day-switch'),caption=document.getElementById('trip-map-caption');
+ var map=null,layer=null,line=null,markers=[],visibleIndices=[],reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var filters=document.createElement('div');filters.className='trip-filter';filters.setAttribute('aria-label','장소 종류');switcher.after(filters);
+ var tools=document.createElement('div');tools.className='trip-map-tools';
+ tools.innerHTML='<button type="button">전체 위치 보기</button>';node.parentElement.appendChild(tools);
+ var toggle=document.createElement('div');toggle.className='trip-view-toggle';
+ toggle.innerHTML='<button type="button" aria-controls="trip-map trip-list" aria-pressed="false">지도 보기 ↗</button>';root.appendChild(toggle);
+ var button=toggle.querySelector('button');
+ function changeView(view){root.dataset.view=view;button.textContent=view==='map'?'일정 보기 ☷':'지도 보기 ↗';button.setAttribute('aria-pressed',String(view==='map'));if(map)setTimeout(function(){map.invalidateSize()},60)}
+ button.addEventListener('click',function(){changeView(root.dataset.view==='map'?'list':'map')});
+ function icon(n,on){return L.divIcon({className:'',html:'<div class="trip-marker'+(on?' selected':'')+'"><span>'+n+'</span></div>',iconSize:[28,28],iconAnchor:[14,27],popupAnchor:[0,-27]})}
+ function focus(index,scroll){
+  selected=index;list.querySelectorAll('.trip-card').forEach(function(c){var active=Number(c.dataset.index)===index;c.classList.toggle('active',active);c.querySelector('.trip-select').setAttribute('aria-pressed',String(active));if(active&&scroll)c.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'})});
+  markers.forEach(function(m,i){if(m)m.setIcon(icon(i+1,i===index))});
+  var p=days[current].places[index];
+  if(map&&markers[index]){map.panTo([p[1],p[2]],{animate:!reduce});markers[index].openPopup()}
+  caption.innerHTML='<b>'+escapeText(p[0])+'</b><p>'+escapeText(p[3])+' · '+escapeText(days[current].label)+'</p>';
+ }
+ function group(p){return /식사|저녁|브런치|디저트|커피|카페|차|베이커리|화과자/.test(p[3])?'먹고 마시기':/쇼핑|장보기/.test(p[3])?'쇼핑':/산책|관광|동네/.test(p[3])?'산책·관광':'이동·숙소'}
+ function showPhoto(name,photo){
+  var dialog=document.getElementById('travel-photo-dialog');if(!dialog){dialog=document.createElement('dialog');dialog.id='travel-photo-dialog';dialog.className='photo-dialog';document.body.appendChild(dialog);dialog.addEventListener('click',function(e){if(e.target===dialog)dialog.close()})}
+  dialog.innerHTML='<form method="dialog"><strong>'+escapeText(name)+'</strong><button aria-label="사진 닫기">닫기 ×</button></form><img src="'+escapeText(photo.src)+'" alt="'+escapeText(photo.alt||name)+'"><p>'+escapeText(photo.label||'장소 사진')+' · <a href="'+escapeText(photo.source)+'" target="_blank" rel="noreferrer">사진 출처 ↗</a></p>';
+  if(dialog.showModal)dialog.showModal();
+ }
+ function fit(all){
+  if(!map)return;var places=days[current].places.filter(function(p,i){return visibleIndices.includes(i)}),city=places.filter(function(p){return p[1]>35.6});if(!all&&city.length>1)places=city;
+  if(places.length)map.fitBounds(places.map(function(p){return[p[1],p[2]]}),{padding:[40,40],maxZoom:15,animate:!reduce});
+ }
+ tools.querySelector('button').addEventListener('click',function(){fit(true)});
+ function renderMap(){
+  if(!map)return;layer.clearLayers();line.clearLayers();markers=[];var bounds=[];
+  days[current].places.forEach(function(p,i){if(!visibleIndices.includes(i))return;var marker=L.marker([p[1],p[2]],{icon:icon(i+1,i===selected)}).bindPopup('<strong>'+escapeText(p[0])+'</strong><br>'+escapeText(p[3]));
+   marker.on('click',function(){focus(i,true)});marker.addTo(layer);markers[i]=marker;bounds.push([p[1],p[2]])});
+  if(filter==='전체')L.polyline(bounds,{color:'#59775f',weight:2,opacity:.6,dashArray:'5 8'}).addTo(line);
+  setTimeout(function(){map.invalidateSize();fit(false)},70);
+ }
+ function renderDay(key){
+  current=key;selected=-1;list.innerHTML='';visibleIndices=[];
+  switcher.querySelectorAll('button').forEach(function(b){var active=b.dataset.day===key;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
+  var day=days[key];root.style.setProperty('--trip-color',day.color);
+  day.places.forEach(function(p,i){
+   if(filter!=='전체'&&group(p)!==filter)return;visibleIndices.push(i);
+   var photo=photos[p[0]],note=notes[p[0]]||'',number=String(i+1).padStart(2,'0'),card=document.createElement('article');card.className='trip-card';card.dataset.index=i;
+   var media=photo?'<button type="button" class="trip-photo" aria-label="'+escapeText(p[0])+' 사진 확대"><img loading="lazy" width="220" height="220" src="'+escapeText(photo.src)+'" alt="'+escapeText(photo.alt||p[0])+'"><small>'+escapeText(photo.label||'사진 보기')+'</small></button>':'<div class="trip-photo trip-no-photo" aria-label="등록된 장소 사진 없음"><span>'+number+'</span><em>'+escapeText(p[3])+'</em></div>';
+   card.innerHTML='<div class="trip-card-main">'+media+'<button class="trip-select" type="button" aria-pressed="false"><div class="trip-kicker">'+number+' / '+escapeText(p[3])+'</div><h3>'+escapeText(p[0])+'</h3><p>'+escapeText(note||'지도에서 위치를 확인해 보세요.')+'</p></button></div><div class="trip-card-actions"><button class="trip-locate" type="button">위치 보기 ↗</button><a class="trip-go" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&query='+p[1]+','+p[2]+'">Google 지도 열기 ↗</a></div>';
+   card.querySelector('.trip-select').addEventListener('click',function(){focus(i,false)});
+   card.querySelector('.trip-locate').addEventListener('click',function(){changeView('map');focus(i,false);if(window.innerWidth<=760)node.parentElement.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})});
+   if(photo){card.querySelector('.trip-photo').addEventListener('click',function(){showPhoto(p[0],photo)});card.querySelector('img').addEventListener('error',function(){var box=this.parentElement;this.remove();box.classList.add('trip-no-photo');box.innerHTML='<span>'+number+'</span><em>사진 연결 확인 중</em>';box.disabled=true},{once:true})}
+   list.appendChild(card);
+  });
+  if(!visibleIndices.length)list.innerHTML='<p class="trip-empty">이 날짜에 저장한 해당 분류의 장소가 없습니다.</p>';
+  caption.innerHTML='<b>'+escapeText(day.label)+' · '+escapeText(day.short)+'</b><p>'+visibleIndices.length+'곳 · 점선은 저장 순서를 이은 참고선입니다.<br>실제 이동 경로는 Google 지도에서 확인하세요.</p>';
+  renderMap();list.scrollTop=0;
+ }
+ ['전체','먹고 마시기','쇼핑','산책·관광','이동·숙소'].forEach(function(name){var b=document.createElement('button');b.type='button';b.textContent=name;b.setAttribute('aria-pressed',String(name===filter));b.addEventListener('click',function(){filter=name;filters.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});renderDay(current)});filters.appendChild(b)});
+ keys.forEach(function(key){var d=days[key],b=document.createElement('button');b.type='button';b.dataset.day=key;b.innerHTML='<b>'+escapeText(d.label)+'</b><span>'+escapeText(d.short)+'</span>';b.addEventListener('click',function(){renderDay(key)});switcher.appendChild(b)});
+ document.querySelectorAll('[data-trip-day]').forEach(function(b){b.addEventListener('click',function(){filter='전체';filters.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x.textContent===filter))});renderDay(b.dataset.tripDay);changeView('list');root.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})})});
+ function tryMap(){if(map||!window.L)return;map=L.map(node,{scrollWheelZoom:false,attributionControl:true});L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);layer=L.layerGroup().addTo(map);line=L.layerGroup().addTo(map);renderMap()}
+ renderDay(keys[0]);tryMap();
+ if(!map){node.innerHTML='<p class="trip-empty">지도를 불러오는 중입니다. 연결이 어려우면 장소 카드의 Google 지도를 이용하세요.</p>';var tries=0,timer=setInterval(function(){if(window.L){node.innerHTML='';tryMap();clearInterval(timer)}else if(++tries>=20)clearInterval(timer)},500)}
+ return true;
+};
+function init(){window.initTripExplorer()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

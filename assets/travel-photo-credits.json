@@ -1,0 +1,58 @@
+{
+  "ginza": {
+    "src": "assets/travel-ginza.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Chuo_Dori_Street,_Ginza_(43461288734).jpg",
+    "author": "Fabio Achilli from Milano, Italy",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "title": "Chuo Dori Street, Ginza (43461288734).jpg"
+  },
+  "tower": {
+    "src": "assets/travel-tower.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:View_of_Tokyo_Tower_from_Azabudai_Hills.jpg",
+    "author": "NMaia",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "title": "View of Tokyo Tower from Azabudai Hills.jpg"
+  },
+  "omote": {
+    "src": "assets/travel-omote.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Tokyu-Plaza-Omotesando-Harajuku-01.jpg",
+    "author": "Rs1421",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "title": "Tokyu-Plaza-Omotesando-Harajuku-01.jpg"
+  },
+  "hatagaya": {
+    "src": "assets/travel-hatagaya.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Kosyu_kaido_hatagaya_shibuya.jpg",
+    "author": "鋸香具師",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "title": "Kosyu kaido hatagaya shibuya.jpg"
+  },
+  "Ginza-Itoya": {
+    "src": "assets/travel-ginza-itoya.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Ginza_Itoya_(34207621235).jpg",
+    "author": "calamity_sal from Brooklyn, NY",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "title": "Ginza Itoya (34207621235).jpg"
+  },
+  "Ginza-Six": {
+    "src": "assets/travel-ginza-six.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:GINZA_SIX2a.jpg",
+    "author": "江戸村のとくぞう",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "title": "GINZA SIX2a.jpg"
+  },
+  "Azabudai-Hills": {
+    "src": "assets/travel-azabudai-hills.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Azabudai_Hills,_opening_day_41.jpg",
+    "author": "Syced",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "title": "Azabudai Hills, opening day 41.jpg"
+  }
+}
