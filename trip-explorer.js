@@ -5,6 +5,8 @@ function escapeText(value){return String(value).replace(/[&<>"']/g,function(c){r
 window.initTripExplorer=function(){
  var root=document.querySelector('.trip-explorer'),node=document.getElementById('trip-map'),dataNode=document.getElementById('trip-data');
  if(!root||!node||!dataNode||root.dataset.ready==='1')return false;
+ var soloRecord=document.getElementById('open-solo-record');
+ if(soloRecord)soloRecord.addEventListener('click',function(){var archive=document.querySelector('.travel-archive');archive.open=true;var tab=document.querySelector('nav.tabs [data-t="d25"]');if(tab)tab.click();var section=document.getElementById('d25');if(section)section.scrollIntoView({behavior:'smooth',block:'start'});});
  var data;try{data=JSON.parse(dataNode.textContent)}catch(e){return false}
  root.dataset.ready='1';
  var days=data.days,photos=data.photos,notes=data.notes||{},keys=Object.keys(days),current=keys[0],filter='전체',selected=-1;
